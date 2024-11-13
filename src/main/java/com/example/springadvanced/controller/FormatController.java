@@ -1,6 +1,7 @@
 package com.example.springadvanced.controller;
 
 import com.example.springadvanced.dto.FormatForm;
+import com.example.springadvanced.dto.JsonFormatDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,6 +26,15 @@ public class FormatController {
         return new ResponseEntity<>(
                 "form.getPrice() = " + form.getPrice() +
                         " form.getOrderDate() = " + form.getOrderDate(),
+                HttpStatus.OK
+        );
+    }
+
+    @PostMapping("/json-format/deserialize")
+    public ResponseEntity<String> jsonFormatDeserialize(@RequestBody JsonFormatDto dto) {
+        return new ResponseEntity<>(
+                "dto.getPrice() = " + dto.getPrice() +
+                        " dto.getOrderDate() = " + dto.getOrderDate(),
                 HttpStatus.OK
         );
     }
