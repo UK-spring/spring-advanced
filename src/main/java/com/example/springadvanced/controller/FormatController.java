@@ -1,22 +1,20 @@
 package com.example.springadvanced.controller;
 
-import com.example.springadvanced.dto.FormatDto;
+import com.example.springadvanced.dto.FormatForm;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class FormatController {
 
     @PostMapping("/format")
-    public ResponseEntity<String> format(@RequestBody FormatDto dto) {
+    public ResponseEntity<String> format(@ModelAttribute FormatForm form) {
         return new ResponseEntity<>(
-                "dto.getPrice() = " + dto.getPrice()
-                        + " dto.getStartAt() = "
-                        + dto.getStartAt() + " dto.getEndAt() = "
-                        + dto.getEndAt(),
+                "form.getPrice() = " + form.getPrice() +
+                        " form.getOrderDate() = " + form.getOrderDate(),
                 HttpStatus.OK
         );
     }
