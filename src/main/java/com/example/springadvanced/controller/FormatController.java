@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,4 +19,14 @@ public class FormatController {
                 HttpStatus.OK
         );
     }
+
+    @PostMapping("/json-format")
+    public ResponseEntity<String> jsonFormat(@RequestBody FormatForm form) {
+        return new ResponseEntity<>(
+                "form.getPrice() = " + form.getPrice() +
+                        " form.getOrderDate() = " + form.getOrderDate(),
+                HttpStatus.OK
+        );
+    }
+
 }
